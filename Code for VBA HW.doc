@@ -47,58 +47,31 @@ Dim test As Integer, cellrow As Long, cellcol As Integer, openrow As Long, i As 
     
     Do While i < totalstockvol
      test = 0
-    
     Do While test = 0
-    
-    
-cellrow = cellrow + 1
-    
-cellrow2 = cellrow2 + 1
-   
-x = Cells(cellrow, cellcol)
-    
-y = Cells(cellrow2, cellcol)
-        
-test = StrComp(x, y)
-    
-    
+  
+  cellrow = cellrow + 1
+  cellrow2 = cellrow2 + 1
+  x = Cells(cellrow, cellcol)
+  y = Cells(cellrow2, cellcol)
+  test = StrComp(x, y)
     Loop
     
-
 Dim closingstock As Variant, openingstock As Variant, yearlychange As Variant, percentchange As Variant
-    
-    
     closingstock = Cells(cellrow, 6)
-    
     openingstock = Cells(openrow, 3)
-    
     yearlychange = closingstock - openingstock
-    
     i = i + 1
-    
     Cells(i, 10) = yearlychange
-    
-
-
     percentchange = (yearlychange / openingstock) * 100
-    
     Cells(i, 11) = percentchange
-    
 
-    ActiveSheet.Range(Cells(openrow, 7), Cells(cellrow, 7)).Select
+  ActiveSheet.Range(Cells(openrow, 7), Cells(cellrow, 7)).Select
+  Cells(i, 12) = Application.WorksheetFunction.Sum(Selection)
 
-
-    Cells(i, 12) = Application.WorksheetFunction.Sum(Selection)
-
-
-    sumvolume = 0
-
-    openrow = cellrow + 1
-    
-    
+sumvolume = 0
+openrow = cellrow + 1
    
 Loop
-   
-        
+ 
 End Sub
 
